@@ -4,6 +4,7 @@ void main() {
   runApp(MaterialApp(
     title: "Awesome App",
     home: HomePage(),
+    theme: ThemeData(primarySwatch: Colors.amber),
   ));
 }
 
@@ -14,43 +15,45 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text("Awesome App"),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Align(
-          alignment: Alignment.bottomRight,
-          child: Container(
-            color: Colors.black,
-            width: 200,
-            height: 400,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Container(
-                    padding: const EdgeInsets.all(8),
-                    width: 100,
-                    height: 100,
-                    color: Colors.green,
-                  ),
-                  Container(
-                    padding: const EdgeInsets.all(8),
-                    width: 100,
-                    height: 100,
-                    color: Colors.yellow,
-                  ),
-                  Container(
-                    padding: const EdgeInsets.all(8),
-                    width: 100,
-                    height: 100,
-                    color: Colors.red,
-                  )
-                ],
+      body: Container(),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            //DrawerHeader(
+            //child: Text(
+            //"//I'm Drawer",
+            // //style: TextStyle(color: Colors.white),
+            //),
+            // decoration: BoxDecoration(color: Colors.amber[600]),
+            //),
+            UserAccountsDrawerHeader(
+              accountName: Text("Priyanshu Porwal"),
+              accountEmail: Text("priyanshuporwal1999@gmail.com"),
+              currentAccountPicture: CircleAvatar(
+                backgroundImage: NetworkImage(
+                    "https://images.unsplash.com/photo-1490127252417-7c393f993ee4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80"),
               ),
             ),
-          ),
+
+            ListTile(
+              leading: Icon(Icons.person),
+              title: Text("Account"),
+              subtitle: Text("Personal"),
+              trailing: Icon(Icons.edit),
+            ),
+            ListTile(
+              leading: Icon(Icons.email),
+              title: Text("Email"),
+              subtitle: Text("Personal@gmail.com"),
+              trailing: Icon(Icons.send),
+            )
+          ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Icon(Icons.edit),
       ),
     );
   }
